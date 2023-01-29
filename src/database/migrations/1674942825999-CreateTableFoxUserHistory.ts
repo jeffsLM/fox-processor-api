@@ -7,6 +7,7 @@ export class CreateTableFoxUserHistory1674942825999 implements MigrationInterfac
         name: 'fox_user_history',
         columns: [
           { name: 'universal_anime_id', type: 'uuid' },
+          { name: 'key', type: 'uuid', isPrimary: true },
           { name: 'user', type: 'varchar' },
           { name: 'episode', type: 'int' },
           { name: 'watched_at', type: 'timestamp', isNullable: true },

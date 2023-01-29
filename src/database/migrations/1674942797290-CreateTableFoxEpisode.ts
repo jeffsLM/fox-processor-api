@@ -8,7 +8,7 @@ export class CreateTableFoxEpisode1674942797290 implements MigrationInterface {
         columns: [
           { name: 'universal_anime_id', type: 'uuid' },
           { name: 'integration_service', type: 'varchar' },
-          { name: 'integration_id', type: 'varchar' },
+          { name: 'integration_id', type: 'varchar', isPrimary: true },
           { name: 'episode', type: 'int' },
           { name: 'title', type: 'varchar' },
           { name: 'alternative_name', type: 'varchar' },
