@@ -22,6 +22,8 @@ class FoxAnime {
   @Column()
   image: string;
   @CreateDateColumn()
+  created_at: Date;
+  @CreateDateColumn()
   updated_at: Date;
   @Column()
   status: string;
