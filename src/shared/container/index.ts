@@ -12,6 +12,9 @@ import { IFoxUserHistoryRepository } from '../../modules/user_history/repositori
 import { FoxProcessorRepository } from '../../modules/processor/implementations/FoxProcessorRepository';
 import { IFoxProcessorRepository } from '../../modules/processor/repositories/IFoxProcessorRepository';
 
+import { FoxQueueRepository } from '../../modules/queue/implementations/FoxQueueRepository';
+import { IFoxQueueRepository } from '../../modules/queue/repositories/IFoxQueueRepository';
+
 container.registerSingleton<IFoxAnimeRepository>('FoxAnimeRepository', FoxAnimeRepository);
 
 container.registerSingleton<IFoxEpisodeRepository>('FoxEpisodeRepository', FoxEpisodeRepository);
@@ -25,3 +28,5 @@ container.registerSingleton<IFoxProcessorRepository>(
   'FoxProcessorRepository',
   FoxProcessorRepository
 );
+
+container.registerSingleton<IFoxQueueRepository>('FoxQueueRepository', FoxQueueRepository);
