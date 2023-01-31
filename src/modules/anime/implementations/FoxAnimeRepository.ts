@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository, FindOneOptions } from 'typeorm';
 
 import { ICreateFoxAnimeDTO } from '../dtos/ICreateFoxAnimeDTO';
 import { FoxAnime } from '../entities/FoxAnime';
@@ -81,6 +81,11 @@ class FoxAnimeRepository implements IFoxAnimeRepository {
 
   async findByUniversalAnimeId(universal_anime_id: string): Promise<FoxAnime[]> {
     const animeInfo = await this.repository.find({ universal_anime_id });
+    return animeInfo;
+  }
+
+  async find(conditions: FindOneOptions<FoxAnime>): Promise<FoxAnime> {
+    const animeInfo = await this.repository.findOne(conditions);
     return animeInfo;
   }
 }

@@ -7,7 +7,7 @@ interface IRequest {
   universal_anime_id: string;
 }
 
-class ListCharacterUserController {
+class ListAnimeController {
   async handle(data: IRequest): Promise<ICreateFoxAnimeDTO[]> {
     const { universal_anime_id } = data;
 
@@ -21,4 +21,4 @@ class ListCharacterUserController {
   }
 }
 
-export { ListCharacterUserController };
+export { ListAnimeController };
