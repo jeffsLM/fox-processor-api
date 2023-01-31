@@ -8,7 +8,7 @@ export class CreateTableFoxProcessor1674942843576 implements MigrationInterface 
         columns: [
           { name: 'universal_anime_id', type: 'uuid' },
           { name: 'integration_service', type: 'varchar' },
-          { name: 'key', type: 'uuid' },
+          { name: 'key', type: 'uuid',isPrimary:true },
           { name: 'last_version', type: 'varchar' },
           { name: 'episode', type: 'int' },
           { name: 'attempt', type: 'int' },
