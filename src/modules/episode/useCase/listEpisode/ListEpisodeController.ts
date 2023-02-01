@@ -8,7 +8,7 @@ interface IRequestObject {
   episode: number;
 }
 
-class ListItensController {
+class ListEpisodeController {
   async handle(data: IRequestObject): Promise<ICreateFoxEpisodeDTO[]> {
     const { universal_anime_id, episode } = data;
 
@@ -23,4 +23,4 @@ class ListItensController {
   }
 }
 
-export { ListItensController };
+export { ListEpisodeController };
