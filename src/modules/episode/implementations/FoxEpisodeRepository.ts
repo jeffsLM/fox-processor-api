@@ -96,7 +96,12 @@ class FoxEpisodeRepository implements IFoxEpisodeRepository {
   }
 
   async findAllEpisodesByUniversalAnimeId(universal_anime_id: string): Promise<FoxEpisode[]> {
-    const episodeinfo = await this.repository.find({ universal_anime_id });
+    const episodeinfo = await this.repository.find({
+      where: universal_anime_id,
+      order: {
+        episode: 'ASC',
+      },
+    });
     return episodeinfo;
   }
 
