@@ -5,7 +5,7 @@ interface IDataRequest {
   universal_anime_id: string;
 }
 
-class GetUniversalIdByTitle {
+class GetInfoAnimeByUniversalAnimeId {
   async execute(data: IDataRequest): Promise<ICreateFoxAnimeDTO[]> {
     const { universal_anime_id } = data;
     const listAnimeController = new ListAnimeController();
@@ -18,4 +18,4 @@ class GetUniversalIdByTitle {
   }
 }
 
-export { GetUniversalIdByTitle };
+export { GetInfoAnimeByUniversalAnimeId };
