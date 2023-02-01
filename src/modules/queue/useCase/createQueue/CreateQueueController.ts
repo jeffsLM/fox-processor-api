@@ -8,15 +8,14 @@ interface IResponseObject {
   message: string;
 }
 
-class CreateUserHistoryController {
+class CreateQueueController {
   async handle(data: ICreateFoxQueueDTO): Promise<IResponseObject> {
-    const { term, key, process, created_at, updated_at } = data;
+    const { term, process, created_at, updated_at } = data;
 
     const createUserUseCase = container.resolve(CreateQueueUseCase);
 
     const result = await createUserUseCase.execute({
       term,
-      key,
       process,
       created_at,
       updated_at,
@@ -26,4 +25,4 @@ class CreateUserHistoryController {
   }
 }
 
-export { CreateUserHistoryController };
+export { CreateQueueController };

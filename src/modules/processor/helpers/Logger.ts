@@ -8,13 +8,13 @@ import { ICreateFoxEpisodeDTO } from '../../episode/dtos/ICreateFoxEpisodeDTO';
 
 interface IDataRequest {
   universal_anime_id: string;
-  episodeData: ICreateFoxEpisodeDTO;
+  epData: ICreateFoxEpisodeDTO;
   flag: 'not_found' | 'success' | 'fail' | 'passthought';
 }
 
 class Logger {
   async execute(data: IDataRequest): Promise<void> {
-    const { universal_anime_id, episodeData, flag } = data;
+    const { universal_anime_id, epData, flag } = data;
 
     const validateAttempAndRemove = new ValidateAttempAndRemove();
     const animeIsValidToProcess = new AnimeIsValidToProcess();
@@ -27,7 +27,7 @@ class Logger {
 
     if (!isValidToProcess)
       return saveLog.execute({
-        episodeData,
+        epData,
         flag: 'fail',
         attempt: 0,
         variantAttemp: false,
@@ -40,7 +40,7 @@ class Logger {
     const attempts = animeInfo.at(-1).attempts_to_cancel_updates;
 
     return saveLog.execute({
-      episodeData,
+      epData,
       flag: flag,
       attempt: attempts,
       variantAttemp: attempts > 0,

@@ -1,8 +1,8 @@
 interface ICreateFoxQueueDTO {
   term: string;
-  key: string;
+  key?: string;
   process: string;
-  created_at: number;
+  created_at: Date;
   updated_at: Date;
 }
 

@@ -10,7 +10,7 @@ class FoxQueue {
   @Column()
   process: string;
   @CreateDateColumn()
-  created_at: number;
+  created_at: Date;
   @CreateDateColumn()
   updated_at: Date;
 

@@ -5,24 +5,14 @@ import { GetFlag } from './GetFlag';
 interface IDataRequest {
   flag: 'not_found' | 'success' | 'fail' | 'passthought';
   variantAttemp: boolean;
-  episodeData: ICreateFoxEpisodeDTO;
+  epData: ICreateFoxEpisodeDTO;
   txt?: string;
-  last_version?: string;
-  resolution?: string;
   attempt?: number;
 }
 
 class SaveLog {
   async execute(data: IDataRequest): Promise<void> {
-    const {
-      variantAttemp,
-      flag,
-      txt = '',
-      episodeData,
-      last_version = 'N',
-      resolution = '',
-      attempt = 0,
-    } = data;
+    const { variantAttemp, flag, txt = '', epData: ep, attempt = 0 } = data;
 
     const createProcessorController = new CreateProcessorController();
     const getFlag = new GetFlag();
@@ -34,15 +24,14 @@ class SaveLog {
     });
 
     await createProcessorController.handle({
-      universal_anime_id: episodeData.universal_anime_id,
-      integration_service: episodeData.integration_service,
-      key: null,
-      last_version,
-      episode: episodeData.episode,
+      universal_anime_id: ep.universal_anime_id,
+      integration_service: ep.integration_service,
+      last_version: ep.last_version,
+      episode: ep.episode,
       attempt,
       status: validMessage.flag,
       description: validMessage.message,
-      resolution,
+      resolution: ep.resolution,
       created_at: new Date(),
     });
 

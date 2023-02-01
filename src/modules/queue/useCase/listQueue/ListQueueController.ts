@@ -5,7 +5,7 @@ import { ICreateFoxQueueDTO } from '../../dtos/ICreateFoxQueueDTO';
 import { FoxQueue } from '../../entities/FoxQueue';
 import { ListQueueUseCase } from './ListQueueUseCase';
 
-class ListUserHistoryController {
+class ListQueueController {
   async handle(condition: FindManyOptions<FoxQueue>): Promise<ICreateFoxQueueDTO[]> {
     const listQueueUseCase = container.resolve(ListQueueUseCase);
 
@@ -15,4 +15,4 @@ class ListUserHistoryController {
   }
 }
 
-export { ListUserHistoryController };
+export { ListQueueController };
