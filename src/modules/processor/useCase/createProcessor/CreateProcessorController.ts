@@ -8,7 +8,7 @@ interface IResponseObject {
   message: string;
 }
 
-class CreateUserHistoryController {
+class CreateProcessorController {
   async handle(data: ICreateFoxProcessorDTO): Promise<IResponseObject> {
     const {
       universal_anime_id,
@@ -42,4 +42,4 @@ class CreateUserHistoryController {
   }
 }
 
-export { CreateUserHistoryController };
+export { CreateProcessorController };
