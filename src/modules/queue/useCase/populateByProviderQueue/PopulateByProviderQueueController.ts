@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { aPlus } from '../../../../service/aPlus';
-
-import { ICreateFoxQueueDTO } from '../../dtos/ICreateFoxQueueDTO';
 import { PopulateByProviderQueueUseCase } from './PopulateByProviderQueueUseCase';
 
 interface IResponseObject {
