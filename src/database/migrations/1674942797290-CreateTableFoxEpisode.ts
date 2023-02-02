@@ -14,6 +14,7 @@ export class CreateTableFoxEpisode1674942797290 implements MigrationInterface {
           { name: 'alternative_name', type: 'varchar' },
           { name: 'sub', type: 'varchar' },
           { name: 'resume', type: 'varchar' },
+          { name: 'url', type: 'varchar' },
           { name: 'image', type: 'varchar', isNullable: true },
           { name: 'rateing', type: 'numeric', isNullable: true },
           { name: 'last_version', type: 'varchar' },

@@ -20,6 +20,8 @@ class FoxEpisode {
   @Column()
   resume: string;
   @Column()
+  url: string;
+  @Column()
   image: string;
   @Column()
   rateing?: number;
