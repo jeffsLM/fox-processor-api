@@ -7,6 +7,7 @@ interface ICreateFoxEpisodeDTO {
   alternative_name: string;
   sub: string;
   resume: string;
+  url: string;
   image?: string;
   rateing?: number;
   last_version: string;

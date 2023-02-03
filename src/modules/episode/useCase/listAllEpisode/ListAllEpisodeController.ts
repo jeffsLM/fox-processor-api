@@ -7,13 +7,13 @@ interface IRequestObject {
   universal_anime_id: string;
 }
 
-class ListAllItensController {
+class ListAllEpisodeController {
   async handle(data: IRequestObject): Promise<ICreateFoxEpisodeDTO[]> {
     const { universal_anime_id } = data;
 
-    const listCharacterUserUseCase = container.resolve(ListAllEpisodeUseCase);
+    const listAllEpisodeUseCase = container.resolve(ListAllEpisodeUseCase);
 
-    const list = await listCharacterUserUseCase.execute({
+    const list = await listAllEpisodeUseCase.execute({
       universal_anime_id,
     });
 
@@ -21,4 +21,4 @@ class ListAllItensController {
   }
 }
 
-export { ListAllItensController };
+export { ListAllEpisodeController };

@@ -51,6 +51,12 @@ class FoxEpisodeRepository implements IFoxEpisodeRepository {
     await this.repository.insert(epsode_id);
   }
 
+  async createMany(data: ICreateFoxEpisodeDTO[]): Promise<void> {
+    const epsode_id = this.repository.create(data);
+
+    await this.repository.insert(epsode_id);
+  }
+
   async save({
     universal_anime_id,
     integration_service,
@@ -101,7 +107,7 @@ class FoxEpisodeRepository implements IFoxEpisodeRepository {
 
   async findAllEpisodesByUniversalAnimeId(universal_anime_id: string): Promise<FoxEpisode[]> {
     const episodeinfo = await this.repository.find({
-      where: universal_anime_id,
+      where: { universal_anime_id: universal_anime_id },
       order: {
         episode: 'ASC',
       },

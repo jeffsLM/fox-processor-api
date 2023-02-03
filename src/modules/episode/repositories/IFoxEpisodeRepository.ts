@@ -4,6 +4,7 @@ import { FoxEpisode } from '../entities/FoxEpisode';
 
 interface IFoxEpisodeRepository {
   create(data: ICreateFoxEpisodeDTO): Promise<void>;
+  createMany(data: ICreateFoxEpisodeDTO[]): Promise<void>;
   save(data: ICreateFoxEpisodeDTO): Promise<void>;
   findEpisodeByUniversalAnimeIdAndEpisode(
     universal_anime_id: string,
