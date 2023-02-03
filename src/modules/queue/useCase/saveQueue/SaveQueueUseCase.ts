@@ -9,7 +9,7 @@ interface IResponseObject {
 }
 
 @injectable()
-class ListQueueUseCase {
+class SaveQueueUseCase {
   constructor(
     @inject('FoxQueueRepository')
     private foxQueueRepository: IFoxQueueRepository
@@ -22,7 +22,7 @@ class ListQueueUseCase {
     created_at,
     updated_at,
   }: ICreateFoxQueueDTO): Promise<IResponseObject> {
-    const episodeAlreadyExists = await this.foxQueueRepository.find({ where: key });
+    const episodeAlreadyExists = await this.foxQueueRepository.find({ where: { key: key } });
 
     if (!episodeAlreadyExists) {
       return {
@@ -45,4 +45,4 @@ class ListQueueUseCase {
     };
   }
 }
-export { ListQueueUseCase };
+export { SaveQueueUseCase };

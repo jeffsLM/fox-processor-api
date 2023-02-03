@@ -3,7 +3,7 @@ import { FindManyOptions } from 'typeorm';
 
 import { ICreateFoxQueueDTO } from '../../dtos/ICreateFoxQueueDTO';
 import { FoxQueue } from '../../entities/FoxQueue';
-import { ListQueueUseCase } from './SaveQueueUseCase';
+import { SaveQueueUseCase } from './SaveQueueUseCase';
 
 interface IResponseObject {
   updated: boolean;
@@ -12,7 +12,7 @@ interface IResponseObject {
 
 class SaveQueueController {
   async handle(data: ICreateFoxQueueDTO): Promise<IResponseObject> {
-    const saveQueueUseCase = container.resolve(ListQueueUseCase);
+    const saveQueueUseCase = container.resolve(SaveQueueUseCase);
 
     const result = await saveQueueUseCase.execute(data);
 

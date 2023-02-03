@@ -13,7 +13,6 @@ class ListQueueUseCase {
 
   async execute(condition: FindManyOptions<FoxQueue>): Promise<FoxQueue[]> {
     const historyUser = await this.foxQueueRepository.find(condition);
-
     return historyUser;
   }
 }
