@@ -58,6 +58,7 @@ class FoxAnimeRepository implements IFoxAnimeRepository {
     updated_at,
     status,
     status_describe,
+    attempts_to_cancel_updates,
   }: ICreateFoxAnimeDTO): Promise<void> {
     await this.repository.update(
       {
@@ -75,6 +76,7 @@ class FoxAnimeRepository implements IFoxAnimeRepository {
         updated_at,
         status,
         status_describe,
+        attempts_to_cancel_updates,
       }
     );
   }

@@ -23,6 +23,7 @@ class UpdateAnimeController {
       updated_at,
       status,
       status_describe,
+      attempts_to_cancel_updates,
     } = data;
 
     const updateAnimeUseCase = container.resolve(UpdateAnimeUseCase);
@@ -40,6 +41,7 @@ class UpdateAnimeController {
       updated_at,
       status,
       status_describe,
+      attempts_to_cancel_updates,
     });
 
     return result;

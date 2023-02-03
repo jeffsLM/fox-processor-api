@@ -21,12 +21,24 @@ class ValidateAttempAndRemove {
     const today = new Date();
     const outdated = new Date(lastUpdated.setDate(today.getDate() + 7));
 
-    const isValidToRemoveAttemp = outdated >= today;
+    const isValidToRemoveAttemp = today >= outdated;
 
     if (isValidToRemoveAttemp)
       await updateAnimeController.handle({
-        ...lastAnimeFinded,
-        attempts_to_cancel_updates: --lastAnimeFinded.attempts_to_cancel_updates,
+        universal_anime_id: lastAnimeFinded.universal_anime_id,
+        integration_service: lastAnimeFinded.integration_service,
+        integration_id: lastAnimeFinded.integration_id,
+        title: lastAnimeFinded.title,
+        alternative_name: lastAnimeFinded.alternative_name,
+        sub: lastAnimeFinded.sub,
+        resume: lastAnimeFinded.resume,
+        rateing: lastAnimeFinded.rateing,
+        image: lastAnimeFinded.image,
+        created_at: lastAnimeFinded.created_at,
+        updated_at: new Date(),
+        status: lastAnimeFinded.status,
+        status_describe: lastAnimeFinded.status_describe,
+        attempts_to_cancel_updates: lastAnimeFinded.attempts_to_cancel_updates - 1,
       });
 
     return isValidToRemoveAttemp;

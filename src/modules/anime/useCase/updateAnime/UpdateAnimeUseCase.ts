@@ -27,6 +27,7 @@ class UpdateAnimeUseCase {
     updated_at,
     status,
     status_describe,
+    attempts_to_cancel_updates,
   }: ICreateFoxAnimeDTO): Promise<IResponseObject> {
     const animeAlreadyExists = await this.foxAnimeRepository.findByUniversalAnimeId(
       universal_anime_id
@@ -52,6 +53,7 @@ class UpdateAnimeUseCase {
       updated_at,
       status,
       status_describe,
+      attempts_to_cancel_updates,
     });
 
     return {
