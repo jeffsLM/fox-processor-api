@@ -33,7 +33,7 @@ class CreateAnimeUseCase {
       universal_anime_id
     );
 
-    if (animeAlreadyExists) {
+    if (animeAlreadyExists.length > 0) {
       return {
         created: false,
         message: 'Anime already exists',

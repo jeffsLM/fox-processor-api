@@ -32,11 +32,11 @@ class FoxAnime {
   @Column()
   attempts_to_cancel_updates: number;
 
-  constructor() {
-    if (!this.universal_anime_id) {
-      this.universal_anime_id = uuidV4();
-    }
-  }
+  //   constructor() {
+  //     if (!this.universal_anime_id) {
+  //       this.universal_anime_id = uuidV4();
+  //     }
+  //   }
 }
 
 export { FoxAnime };

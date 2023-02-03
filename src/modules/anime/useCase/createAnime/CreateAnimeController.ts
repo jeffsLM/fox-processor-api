@@ -25,6 +25,8 @@ class CreateAnimeController {
       status_describe,
     } = data;
 
+    console.log('data create Anime', data);
+
     const createUserUseCase = container.resolve(CreateAnimeUseCase);
 
     const result = await createUserUseCase.execute({
