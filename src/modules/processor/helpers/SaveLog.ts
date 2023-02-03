@@ -45,11 +45,20 @@ class SaveLog {
 
     const lastAnime = animeInfo.at(-1);
     await updateAnimeController.handle({
-      ...lastAnime,
       updated_at: new Date(),
       attempts_to_cancel_updates: attempt,
       status: validMessage.flag,
       status_describe: validMessage.message,
+      alternative_name: lastAnime.alternative_name,
+      created_at: lastAnime.created_at,
+      image: lastAnime.image,
+      integration_id: lastAnime.integration_id,
+      integration_service: lastAnime.integration_service,
+      rateing: lastAnime.rateing,
+      resume: lastAnime.resume,
+      sub: lastAnime.sub,
+      title: lastAnime.title,
+      universal_anime_id: lastAnime.universal_anime_id,
     });
 
     return;

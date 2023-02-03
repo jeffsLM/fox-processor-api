@@ -42,7 +42,7 @@ class Logger {
     return saveLog.execute({
       epData,
       flag: flag,
-      attempt: attempts,
+      attempt: isValidToAttemp ? attempts - 1 : attempts,
       variantAttemp: attempts > 0,
       txt: isValidToAttemp
         ? ' - tentativa de atualização removida'

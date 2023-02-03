@@ -8,7 +8,7 @@ export const flags = [
       },
       {
         variantAttemp: true,
-        message: (txt: string) => `anime finalizado${txt}`,
+        message: (txt: string) => `anime finalizado`,
       },
     ],
   },
