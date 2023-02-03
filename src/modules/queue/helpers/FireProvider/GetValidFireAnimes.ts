@@ -1,5 +1,5 @@
-import { aFire } from '../../../service/aFire';
-import { DefineFireObjectKeys } from '../helpers/DefineFireObjectKeys';
+import { aFire } from '../../../../service/aFire';
+import { DefineFireObjectKeys } from '../../helpers/FireProvider/DefineFireObjectKeys';
 interface IFireObjectKeys {
   '0': string;
   '1': string;
@@ -34,7 +34,7 @@ export const GetValidFireAnimes = async (term: string) => {
           },
         }
       )
-      .then((e) => {
+      .then((e: any) => {
         const animeData: IFireObjectKeys[] = e.data;
         const formatArrayToObject = animeData.map((anime) => Object.assign({}, anime));
         const animeObjectRenamedKeys = DefineFireObjectKeys(formatArrayToObject);
@@ -42,7 +42,7 @@ export const GetValidFireAnimes = async (term: string) => {
 
         return newAnimeData;
       })
-      .catch((e) => {
+      .catch(() => {
         console.log('ERRO', term);
       }),
   ]);

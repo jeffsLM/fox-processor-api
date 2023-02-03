@@ -1,11 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ICreateFoxAnimeDTO } from '../../anime/dtos/ICreateFoxAnimeDTO';
-import { ICreateFoxEpisodeDTO } from '../../episode/dtos/ICreateFoxEpisodeDTO';
+import { ICreateFoxAnimeDTO } from '../../../anime/dtos/ICreateFoxAnimeDTO';
+import { ICreateFoxEpisodeDTO } from '../../../episode/dtos/ICreateFoxEpisodeDTO';
 import { GetValidFireEpisode } from './GetValidFireEpisode';
+import { Logger } from '../../../processor/helpers/Logger';
 
 class ProviderFireEpisodeInfo {
   async execute(anime: ICreateFoxAnimeDTO, lastEpisode: number): Promise<ICreateFoxEpisodeDTO[]> {
+    const logger = new Logger();
     const episodeCount = Object.keys(new Array(100).fill(null)).map(Number);
 
     let allEpisodes: ICreateFoxEpisodeDTO[] = [];
@@ -17,10 +19,7 @@ class ProviderFireEpisodeInfo {
       }
 
       episodeData.data.map((episode) => {
-        console.log('anime', anime);
-        console.log('anime64', anime.integration_id + '_' + uuidv4());
-        console.log('episode', episode);
-        allEpisodes.push({
+        const episodeData = {
           universal_anime_id: anime.universal_anime_id,
           integration_service: anime.integration_service,
           integration_episode_id: anime.integration_id + '_' + uuidv4(),
@@ -37,6 +36,14 @@ class ProviderFireEpisodeInfo {
           max_duration: '0',
           created_at: new Date(),
           updated_at: new Date(),
+        };
+
+        allEpisodes.push(episodeData);
+
+        logger.execute({
+          epData: episodeData,
+          flag: 'success',
+          universal_anime_id: episodeData.universal_anime_id,
         });
       });
     }

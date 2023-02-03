@@ -3,8 +3,8 @@ import { Request, Response } from 'express';
 import { ListQueueController } from '../listQueue/ListQueueController';
 import { SaveQueueController } from '../saveQueue/SaveQueueController';
 
-import { ProviderFireAnimeInfo } from '../../helpers/ProviderFireAnimeInfo';
-import { ProviderFireEpisodeInfo } from '../../helpers/ProviderFireEpisodeInfo';
+import { ProviderFireAnimeInfo } from '../../helpers/FireProvider/ProviderFireAnimeInfo';
+import { ProviderFireEpisodeInfo } from '../../helpers/FireProvider/ProviderFireEpisodeInfo';
 
 import { GenerateUniversalAnimeId } from '../../../anime/helpers/GenerateUniversalAnimeId';
 import { CreateAnimeController } from '../../../anime/useCase/createAnime/CreateAnimeController';
@@ -41,7 +41,6 @@ class ProcessQueueByFireProviderController {
     await Promise.all(
       queueToProcess.map(async (animeQueue) => {
         const animeInfo = await generateUniversalAnimeId.execute({ title: animeQueue.title });
-        console.log('animeInfo', animeInfo);
         if (animeInfo.created) {
           await createAnimeController.handle({
             universal_anime_id: animeInfo.universal_anime_id,
