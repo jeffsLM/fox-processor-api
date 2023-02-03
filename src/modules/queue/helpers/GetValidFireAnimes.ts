@@ -1,5 +1,5 @@
 import { aFire } from '../../../service/aFire';
-
+import { DefineFireObjectKeys } from '../helpers/DefineFireObjectKeys';
 interface IFireObjectKeys {
   '0': string;
   '1': string;
@@ -10,19 +10,42 @@ interface IFireObjectKeys {
   '6': string;
 }
 
+interface IProviderFireAnimeInfo {
+  title: string;
+  image: string;
+  rateing: number;
+  sub: string;
+  alternative_name: string;
+  integration_id: string;
+  date: Date;
+}
+
 export const GetValidFireAnimes = async (term: string) => {
-  const newAnimeData: IFireObjectKeys[] = await aFire
-    .post(
-      'proc/quicksearch',
-      {},
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          word: term,
-        },
-      }
-    )
-    .then((e) => e.data);
+  var newAnimeData: IProviderFireAnimeInfo[] = [];
+  await Promise.all([
+    await aFire
+      .post(
+        'proc/quicksearch',
+        { word: term.replace(/[0-9]/g, '') },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS)',
+          },
+        }
+      )
+      .then((e) => {
+        const animeData: IFireObjectKeys[] = e.data;
+        const formatArrayToObject = animeData.map((anime) => Object.assign({}, anime));
+        const animeObjectRenamedKeys = DefineFireObjectKeys(formatArrayToObject);
+        animeObjectRenamedKeys.map((item: IProviderFireAnimeInfo) => newAnimeData.push(item));
+
+        return newAnimeData;
+      })
+      .catch((e) => {
+        console.log('ERRO', term);
+      }),
+  ]);
 
   return newAnimeData;
 };

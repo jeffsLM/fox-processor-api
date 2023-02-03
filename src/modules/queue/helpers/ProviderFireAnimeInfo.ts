@@ -1,5 +1,4 @@
 import { ICreateFoxQueueDTO } from '../dtos/ICreateFoxQueueDTO';
-import { DefineFireObjectKeys } from '../helpers/DefineFireObjectKeys';
 import { GetValidFireAnimes } from '../helpers/GetValidFireAnimes';
 
 interface IProviderFireAnimeInfo {
@@ -15,14 +14,15 @@ interface IProviderFireAnimeInfo {
 class ProviderFireAnimeInfo {
   async execute(data: ICreateFoxQueueDTO[]): Promise<IProviderFireAnimeInfo[]> {
     let animeValidData: IProviderFireAnimeInfo[] = [];
-    data.map(async (anime) => {
-      const animeData = await GetValidFireAnimes(anime.term);
-      const formatArrayToObject = animeData.map((anime) => Object.assign({}, anime));
-
-      const animeObjectRenamedKeys = DefineFireObjectKeys(formatArrayToObject);
-      animeObjectRenamedKeys.map((item: IProviderFireAnimeInfo) => animeValidData.push(item));
-    });
-
+    await Promise.all(
+      data.map(async (anime) => {
+        const animeData: any = await GetValidFireAnimes(anime.term);
+        console.log('animeData', animeData);
+        if (animeData && animeData.length > 0) {
+          return animeValidData.push(animeData[0]);
+        }
+      })
+    );
     return animeValidData;
   }
 }

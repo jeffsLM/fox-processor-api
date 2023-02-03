@@ -13,22 +13,29 @@ interface IFireObjectKeys {
   };
 }
 
-export const GetValidFireEpisode = async (integration_id: string, episode: number) => {
+export const GetValidFireEpisode = async (
+  integration_id: string,
+  episode: number
+): Promise<IFireObjectKeys> => {
   const formatedIntegrationId = integration_id.replace('-todos-os-episodios', '');
-
-  const newAnimeData: IFireObjectKeys[] = await aFire
-    .post(
-      `proc/video/${formatedIntegrationId}/${episode}`,
-      {},
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS)',
-          charset: 'utf-8',
-        },
-      }
-    )
-    .then((e) => e.data);
-
+  var newAnimeData: IFireObjectKeys;
+  console.log('get Episodes', formatedIntegrationId);
+  await Promise.all([
+    (newAnimeData = await aFire
+      .post(
+        `video/${formatedIntegrationId}/${episode}`,
+        {},
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS)',
+            charset: 'utf-8',
+          },
+        }
+      )
+      .then((e) => e.data)
+      .catch(() => console.error('error', formatedIntegrationId))),
+  ]);
+  console.log('newAnimeData', newAnimeData);
   return newAnimeData;
 };
