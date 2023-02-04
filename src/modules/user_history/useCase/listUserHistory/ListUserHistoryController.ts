@@ -1,15 +1,11 @@
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 
-import { ICreateFoxUserHistoryDTO } from '../../dtos/ICreateFoxUserHistoryDTO';
 import { ListUserHistoryUseCase } from './ListUserHistoryUseCase';
 
-interface IRequest {
-  user: string;
-}
-
 class ListUserHistoryController {
-  async handle(data: IRequest): Promise<ICreateFoxUserHistoryDTO[]> {
-    const { user } = data;
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { user } = request.body;
 
     const listUserHistoryUseCase = container.resolve(ListUserHistoryUseCase);
 
@@ -17,7 +13,7 @@ class ListUserHistoryController {
       user,
     });
 
-    return list;
+    return response.status(200).json(list).send();
   }
 }
 

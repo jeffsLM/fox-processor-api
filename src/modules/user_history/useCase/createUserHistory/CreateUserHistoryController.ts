@@ -1,15 +1,10 @@
+import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { ICreateFoxUserHistoryDTO } from '../../dtos/ICreateFoxUserHistoryDTO';
 import { CreateUserHistoryUseCase } from './CreateUserHistoryUseCase';
 
-interface IResponseObject {
-  created: boolean;
-  message: string;
-}
-
 class CreateUserHistoryController {
-  async handle(data: ICreateFoxUserHistoryDTO): Promise<IResponseObject> {
+  async handle(request: Request, response: Response): Promise<Response> {
     const {
       universal_anime_id,
       key,
@@ -19,7 +14,7 @@ class CreateUserHistoryController {
       last_viewed_at,
       max_duration,
       progress,
-    } = data;
+    } = request.body;
 
     const createUserUseCase = container.resolve(CreateUserHistoryUseCase);
 
@@ -34,7 +29,7 @@ class CreateUserHistoryController {
       progress,
     });
 
-    return result;
+    return response.status(201).json(result).send();
   }
 }
 

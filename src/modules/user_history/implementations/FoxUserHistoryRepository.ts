@@ -38,7 +38,10 @@ class FoxUserHistoryRepository implements IFoxUserHistoryRepository {
   }
 
   async findByUserId(user: string): Promise<FoxUserHistory[]> {
-    const episodeinfo = await this.repository.find({ user });
+    const episodeinfo = await this.repository.find({
+      where: { user: user },
+      order: { last_viewed_at: 'DESC' },
+    });
     return episodeinfo;
   }
 }
