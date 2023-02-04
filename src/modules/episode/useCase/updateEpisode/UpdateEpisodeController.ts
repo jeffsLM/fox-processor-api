@@ -8,7 +8,7 @@ interface IResponseObject {
   message: string;
 }
 
-class UpdateSkillController {
+class UpdateEpisodeController {
   async handle(data: ICreateFoxEpisodeDTO): Promise<IResponseObject> {
     const {
       universal_anime_id,
@@ -54,4 +54,4 @@ class UpdateSkillController {
   }
 }
 
-export { UpdateSkillController };
+export { UpdateEpisodeController };

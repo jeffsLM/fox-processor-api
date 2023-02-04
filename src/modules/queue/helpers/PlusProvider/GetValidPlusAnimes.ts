@@ -15,7 +15,7 @@ interface IProviderPlusAnimeInfo {
 export const GetValidPlusAnimes = async (term: string) => {
   var newAnimeData: IPlusObjectKeys[] = [];
   await aPlus
-    .get('play-api.php?search=' + term.replace(/[0-9]/g, ''))
+    .get('play-api.php?search=' + term)
     .then((e) => {
       e.data.map((item: IProviderPlusAnimeInfo) =>
         newAnimeData.push({
@@ -27,8 +27,9 @@ export const GetValidPlusAnimes = async (term: string) => {
 
       return newAnimeData;
     })
-    .catch(() => {
+    .catch((e) => {
       console.log('ERRO', term);
+      console.log('ERRO', e);
     });
 
   return newAnimeData;

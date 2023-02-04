@@ -13,19 +13,19 @@ interface IProviderPlusEpisode {
   episode: string;
 }
 
-export const GetValidFireEpisode = async (
+export const GetValidPlusAllEpisodes = async (
   integration_id: string
 ): Promise<IProviderPlusEpisode[]> => {
   let animeDataFormated: IProviderPlusEpisode[] = [];
   await aPlus
     .get(`play-api.php?cat_id=${integration_id}`)
     .then((e) => {
-      e.data.map((episode: IData) => {
+      e.data.map((episode: IData, index: number) => {
         animeDataFormated.push({
           integration_episode_id: episode.video_id,
           integration_id: episode.video_id,
           title: episode.title.substring(0, episode.title.length - 2),
-          episode: episode.title.substring(episode.title.length - 2, episode.title.length),
+          episode: (e.data.length - index).toString(),
         });
       });
     })

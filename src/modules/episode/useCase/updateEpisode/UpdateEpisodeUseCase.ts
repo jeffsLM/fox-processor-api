@@ -38,10 +38,24 @@ class UpdateEpisodeUseCase {
     );
 
     if (!episodeAlreadyExists) {
-      return {
-        updated: false,
-        message: 'episode not exists',
-      };
+      await this.foxEpisodeRepository.create({
+        universal_anime_id,
+        integration_service,
+        integration_episode_id,
+        episode,
+        title,
+        alternative_name,
+        sub,
+        resume,
+        url,
+        image,
+        rateing,
+        last_version,
+        resolution,
+        max_duration,
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
     }
 
     await this.foxEpisodeRepository.save({

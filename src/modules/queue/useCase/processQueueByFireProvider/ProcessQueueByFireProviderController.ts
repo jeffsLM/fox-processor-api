@@ -16,6 +16,8 @@ import { Logger } from '../../../processor/helpers/Logger';
 import { GetLastEpisodeIntegrateByAnimeId } from '../../../episode/helpers/GetLastEpisodeIntegrateByAnimeId';
 import { CreateManyEpisodeController } from '../../../episode/useCase/createManyEpisode/CreateManyEpisodeController';
 
+import { ProcessQueueByPlusProviderController } from '../processQueueByPlusProvider/ProcessQueueByPlusProviderController';
+
 class ProcessQueueByFireProviderController {
   async handle(_: Request, response: Response): Promise<Response> {
     const listQueueController = new ListQueueController();
@@ -32,6 +34,7 @@ class ProcessQueueByFireProviderController {
     const animeIsValidToProcess = new AnimeIsValidToProcess();
 
     const getLastEpisodeIntegrateByAnimeId = new GetLastEpisodeIntegrateByAnimeId();
+    const processQueueByPlusProviderController = new ProcessQueueByPlusProviderController();
 
     const logger = new Logger();
 
@@ -99,6 +102,8 @@ class ProcessQueueByFireProviderController {
         updated_at: new Date(),
       });
     });
+
+    await processQueueByPlusProviderController.handle();
 
     return response.status(201).json(queueToProcess).send();
   }
