@@ -17,8 +17,8 @@ class ProviderFireAnimeInfo {
     await Promise.all(
       data.map(async (anime) => {
         const animeData: any = await GetValidFireAnimes(anime.term);
-        console.log('animeData', animeData);
         if (animeData && animeData.length > 0) {
+          console.log('animeData', animeData[0]);
           return animeValidData.push(animeData[0]);
         }
       })

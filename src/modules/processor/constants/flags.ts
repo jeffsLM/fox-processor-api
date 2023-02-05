@@ -19,6 +19,10 @@ export const flags = [
         variantAttemp: false,
         message: (txt: string) => `novo epsodio indexado${txt}`,
       },
+      {
+        variantAttemp: true,
+        message: (txt: string) => `novo epsodio indexado${txt}`,
+      },
     ],
   },
   {
@@ -26,6 +30,10 @@ export const flags = [
     type: [
       {
         variantAttemp: false,
+        message: (txt: string) => `error - ${txt}`,
+      },
+      {
+        variantAttemp: true,
         message: (txt: string) => `error - ${txt}`,
       },
     ],

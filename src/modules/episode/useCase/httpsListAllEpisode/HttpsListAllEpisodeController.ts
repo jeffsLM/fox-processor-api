@@ -1,4 +1,5 @@
 import { container } from 'tsyringe';
+import { Response, Request } from 'express';
 
 import { HttpsListAllEpisodeUseCase } from './HttpsListAllEpisodeUseCase';
 import { ICreateFoxEpisodeDTO } from '../../dtos/ICreateFoxEpisodeDTO';
@@ -8,8 +9,8 @@ interface IRequestObject {
 }
 
 class HttpsListAllEpisodeController {
-  async handle(data: IRequestObject): Promise<ICreateFoxEpisodeDTO[]> {
-    const { universal_anime_id } = data;
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { universal_anime_id } = request.body;
 
     const httpsListAllEpisodeUseCase = container.resolve(HttpsListAllEpisodeUseCase);
 
@@ -17,7 +18,7 @@ class HttpsListAllEpisodeController {
       universal_anime_id,
     });
 
-    return list;
+    return response.status(200).json(list).send();
   }
 }
 

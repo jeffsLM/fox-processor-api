@@ -117,6 +117,7 @@ class FoxEpisodeRepository implements IFoxEpisodeRepository {
       where: { universal_anime_id: universal_anime_id },
       order: {
         episode: 'ASC',
+        resolution: 'DESC',
       },
     });
     return episodeinfo;

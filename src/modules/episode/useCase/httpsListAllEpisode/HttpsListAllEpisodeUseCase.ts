@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { ILike, Not } from 'typeorm';
 
 import { FoxEpisode } from '../../entities/FoxEpisode';
 import { IFoxEpisodeRepository } from '../../repositories/IFoxEpisodeRepository';
@@ -16,10 +15,9 @@ class HttpsListAllEpisodeUseCase {
   ) {}
 
   async execute({ universal_anime_id }: IRequest): Promise<FoxEpisode[]> {
-    const allEpisodeAlreadyExists = await this.foxEpisodeRepository.find({
-      where: { universal_anime_id: universal_anime_id, url: Not(ILike('%google%')) },
-      order: { episode: 'ASC' },
-    });
+    const allEpisodeAlreadyExists = await this.foxEpisodeRepository.findAllEpisodesByUniversalAnimeId(
+      universal_anime_id
+    );
 
     return allEpisodeAlreadyExists;
   }

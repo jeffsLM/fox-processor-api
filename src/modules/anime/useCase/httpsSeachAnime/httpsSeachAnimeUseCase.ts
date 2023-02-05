@@ -12,8 +12,9 @@ class HttpsSeachAnimeUseCase {
   ) {}
 
   async execute(search: string): Promise<FoxAnime[]> {
+    const term = `%${search}%`;
     const animeAlreadyExists = await this.foxAnimeRepository.findAll({
-      where: { title: ILike(`%${search}%`) },
+      where: { title: ILike(term) },
     });
 
     return animeAlreadyExists;

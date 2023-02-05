@@ -1,4 +1,4 @@
-import { ListAllItensController } from '../useCase/listAllEpisode/ListAllEpisodeController';
+import { ListAllEpisodeController } from '../useCase/listAllEpisode/ListAllEpisodeController';
 import { ICreateFoxEpisodeDTO } from '../dtos/ICreateFoxEpisodeDTO';
 
 interface IDataRequest {
@@ -8,7 +8,7 @@ interface IDataRequest {
 class GetAllEpisodesByUniversalAnimeId {
   async execute(data: IDataRequest): Promise<ICreateFoxEpisodeDTO[]> {
     const { universal_anime_id } = data;
-    const listAllItensController = new ListAllItensController();
+    const listAllItensController = new ListAllEpisodeController();
 
     const episodeData = await listAllItensController.handle({
       universal_anime_id,

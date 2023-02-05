@@ -17,6 +17,7 @@ import { GetLastEpisodeIntegrateByAnimeId } from '../../../episode/helpers/GetLa
 import { CreateManyEpisodeController } from '../../../episode/useCase/createManyEpisode/CreateManyEpisodeController';
 
 import { ProcessQueueByPlusProviderController } from '../processQueueByPlusProvider/ProcessQueueByPlusProviderController';
+import { ILike, Not } from 'typeorm';
 
 class ProcessQueueByFireProviderController {
   async handle(_: Request, response: Response): Promise<Response> {
@@ -38,7 +39,13 @@ class ProcessQueueByFireProviderController {
 
     const logger = new Logger();
 
-    const listAnime = await listQueueController.handle({ where: { process: 'N' }, take: 5 });
+    const listAnime = await listQueueController.handle({
+      where: {
+        process: 'N',
+        term: Not(ILike('%BORUTO%')) && Not(ILike('%One Piece%')) && Not(ILike('%Digimon%')),
+      },
+      take: 5,
+    });
     const queueToProcess = await providerFireAnimeInfo.execute(listAnime);
 
     await Promise.all(
