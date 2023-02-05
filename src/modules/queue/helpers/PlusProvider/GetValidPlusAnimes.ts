@@ -21,7 +21,7 @@ export const GetValidPlusAnimes = async (term: string) => {
         newAnimeData.push({
           integration_id: item.id,
           title: item.category_name,
-          image: item.category_image,
+          image: 'https://cdn.appanimeplus.tk/img/' + item.category_image,
         })
       );
 

@@ -1,4 +1,3 @@
-import PQueue from 'p-queue';
 import { ICreateFoxAnimeDTO } from '../../../anime/dtos/ICreateFoxAnimeDTO';
 import { ICreateFoxEpisodeDTO } from '../../../episode/dtos/ICreateFoxEpisodeDTO';
 import { GetValidPlusAllEpisodes } from './GetValidPlusAllEpisodes';
