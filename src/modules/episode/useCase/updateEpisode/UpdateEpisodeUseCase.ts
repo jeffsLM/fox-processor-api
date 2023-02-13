@@ -32,10 +32,9 @@ class UpdateEpisodeUseCase {
     max_duration,
     created_at,
   }: ICreateFoxEpisodeDTO): Promise<IResponseObject> {
-    const episodeAlreadyExists = await this.foxEpisodeRepository.findEpisodeByUniversalAnimeIdAndEpisode(
-      universal_anime_id,
-      episode
-    );
+    const episodeAlreadyExists = await this.foxEpisodeRepository.find({
+      where: { universal_anime_id: universal_anime_id, episode: episode, resolution: resolution },
+    });
 
     if (!episodeAlreadyExists) {
       await this.foxEpisodeRepository.create({
@@ -57,7 +56,6 @@ class UpdateEpisodeUseCase {
         updated_at: new Date(),
       });
     }
-
     await this.foxEpisodeRepository.save({
       universal_anime_id,
       integration_service,

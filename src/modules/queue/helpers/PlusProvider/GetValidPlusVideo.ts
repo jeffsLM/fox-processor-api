@@ -30,7 +30,7 @@ export const GetValidPlusVideo = async (video_id: string): Promise<IProviderPlus
             integration_id: episode.category_id,
             title: episode.title,
             episode: '',
-            resolution: '720p',
+            resolution: '360p',
             url: episode.location,
           });
         }
@@ -40,7 +40,7 @@ export const GetValidPlusVideo = async (video_id: string): Promise<IProviderPlus
             integration_id: episode.category_id,
             title: episode.title,
             episode: '',
-            resolution: '1080p',
+            resolution: '720p',
             url: episode.locationsd,
           });
         }

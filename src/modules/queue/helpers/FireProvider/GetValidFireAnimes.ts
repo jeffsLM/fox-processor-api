@@ -26,7 +26,7 @@ export const GetValidFireAnimes = async (term: string) => {
     await aFire
       .post(
         'proc/quicksearch',
-        { word: term.replace(/[0-9]/g, '') },
+        { word: term },
         {
           headers: {
             'Content-Type': 'multipart/form-data',
