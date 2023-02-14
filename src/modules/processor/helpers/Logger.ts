@@ -39,15 +39,15 @@ class Logger {
 
     const attempts = animeInfo.at(-1).attempts_to_cancel_updates;
 
-    console.log({
-      epData,
-      flag: flag,
-      attempt: isValidToAttemp ? attempts - 1 : attempts,
-      variantAttemp: attempts > 0,
-      txt: isValidToAttemp
-        ? ' - tentativa de atualização removida'
-        : ' - apenas consulta realizada',
-    });
+    // console.log({
+    //   epData,
+    //   flag: flag,
+    //   attempt: isValidToAttemp ? attempts - 1 : attempts,
+    //   variantAttemp: attempts > 0,
+    //   txt: isValidToAttemp
+    //     ? ' - tentativa de atualização removida'
+    //     : ' - apenas consulta realizada',
+    // });
 
     return saveLog.execute({
       epData,

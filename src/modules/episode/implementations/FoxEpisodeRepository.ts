@@ -74,11 +74,11 @@ class FoxEpisodeRepository implements IFoxEpisodeRepository {
     max_duration,
     updated_at,
   }: ICreateFoxEpisodeDTO): Promise<void> {
-    console.log('atualizado', {
-      universal_anime_id,
-      episode,
-      resolution,
-    });
+    // console.log('atualizado', {
+    //   universal_anime_id,
+    //   episode,
+    //   resolution,
+    // });
     await this.repository.update(
       {
         universal_anime_id,

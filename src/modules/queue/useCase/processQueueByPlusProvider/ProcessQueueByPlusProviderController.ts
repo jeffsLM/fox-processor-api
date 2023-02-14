@@ -18,10 +18,10 @@ class ProcessQueueByPlusProviderController {
     const episodeList = await listEpisodeAnyTermController.handle({
       where: { url: ILike(`%google%`) },
     });
-    console.log('episodeList', episodeList);
+    // console.log('episodeList', episodeList);
 
     const episodesToReprocess = await providerPlusAnimeInfo.execute(episodeList);
-    console.log('episodesToReprocess', episodesToReprocess);
+    // console.log('episodesToReprocess', episodesToReprocess);
 
     await Promise.all(
       episodesToReprocess.map(async (animeQueue) => {

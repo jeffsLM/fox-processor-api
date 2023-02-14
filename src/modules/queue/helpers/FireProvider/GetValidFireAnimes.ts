@@ -43,7 +43,7 @@ export const GetValidFireAnimes = async (term: string) => {
         return newAnimeData;
       })
       .catch(() => {
-        console.log('ERRO', term);
+        // console.log('ERRO', term);
       }),
   ]);
 

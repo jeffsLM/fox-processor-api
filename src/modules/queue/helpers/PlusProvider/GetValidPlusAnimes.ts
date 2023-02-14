@@ -28,8 +28,8 @@ export const GetValidPlusAnimes = async (term: string) => {
       return newAnimeData;
     })
     .catch((e) => {
-      console.log('ERRO', term);
-      console.log('ERRO', e);
+      //   console.log('ERRO', term);
+      //   console.log('ERRO', e);
     });
 
   return newAnimeData;
