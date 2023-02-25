@@ -11,10 +11,10 @@ module.exports = {
     // "cli": {
     //     "migrationsDir": process.env.MIGRATIONS_DIR
     // },
-    // "ssl": false,
-    // "extra": {
-    //     "ssl": {
-    //         "rejectUnauthorized": false
-    //     }
-    // }
+    "ssl": false,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    }
 }
