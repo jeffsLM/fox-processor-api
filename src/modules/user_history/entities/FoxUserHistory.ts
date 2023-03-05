@@ -16,8 +16,6 @@ class FoxUserHistory {
   @CreateDateColumn()
   last_viewed_at: Date;
   @Column()
-  CreateDateColumn: Date;
-  @Column()
   max_duration: number;
   @Column()
   progress: number;
