@@ -4,7 +4,7 @@ import { FoxAnime } from '../../entities/FoxAnime';
 import { IFoxAnimeRepository } from '../../repositories/IFoxAnimeRepository';
 
 @injectable()
-class HttpsListLastAnimeUseCase {
+class HttpsListAnimeUseCase {
   constructor(
     @inject('FoxAnimeRepository')
     private foxAnimeRepository: IFoxAnimeRepository
@@ -12,13 +12,12 @@ class HttpsListLastAnimeUseCase {
 
   async execute(): Promise<FoxAnime[]> {
     const animeAlreadyExists = await this.foxAnimeRepository.findAll({
-      take: 20,
       order: {
-        updated_at: 'DESC',
+        title: 'ASC',
       },
     });
 
     return animeAlreadyExists;
   }
 }
-export { HttpsListLastAnimeUseCase };
+export { HttpsListAnimeUseCase };
