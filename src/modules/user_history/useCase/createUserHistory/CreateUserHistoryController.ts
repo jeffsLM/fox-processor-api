@@ -16,17 +16,6 @@ class CreateUserHistoryController {
       progress,
     } = request.body;
 
-    console.log('user', {
-      universal_anime_id,
-      key,
-      user,
-      episode,
-      watched_at,
-      last_viewed_at,
-      max_duration,
-      progress,
-    });
-
     const createUserUseCase = container.resolve(CreateUserHistoryUseCase);
 
     const result = await createUserUseCase.execute({

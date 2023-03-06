@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import { CreateQueueController } from '../modules/queue/useCase/createQueue/CreateQueueController';
+import { HttpsCreateQueueController } from '../modules/queue/useCase/HttpsCreateQueue/HttpsCreateQueueController';
 
 const queueRoutes = Router();
 
-const createQueueController = new CreateQueueController();
+const httpsCreateQueueController = new HttpsCreateQueueController();
 
-queueRoutes.post('/create', createQueueController.handle);
+queueRoutes.post('/create', httpsCreateQueueController.handle);
 
 export { queueRoutes };
