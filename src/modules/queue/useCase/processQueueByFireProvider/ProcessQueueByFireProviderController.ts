@@ -50,7 +50,10 @@ class ProcessQueueByFireProviderController {
 
     await Promise.all(
       queueToProcess.map(async (animeQueue) => {
-        const animeInfo = await generateUniversalAnimeId.execute({ title: animeQueue.title });
+        const animeInfo = await generateUniversalAnimeId.execute({
+          title: animeQueue.title,
+          sub: animeQueue.sub,
+        });
         if (animeInfo.created) {
           await createAnimeController.handle({
             universal_anime_id: animeInfo.universal_anime_id,

@@ -4,6 +4,7 @@ import { ILike } from 'typeorm';
 
 interface IDataRequest {
   title: string;
+  sub: string;
 }
 
 interface IReturn extends ICreateFoxAnimeDTO {
@@ -12,12 +13,12 @@ interface IReturn extends ICreateFoxAnimeDTO {
 
 class GetUniversalIdByTitle {
   async execute(data: IDataRequest): Promise<IReturn> {
-    const { title } = data;
+    const { title, sub } = data;
     const listAnimeAnyTermController = new ListAnimeAnyTermController();
 
     const titleFormated = title.replace(' ', '%');
     const animeData = await listAnimeAnyTermController.handle({
-      where: { title: ILike(`%${titleFormated}%`) },
+      where: { title: ILike(`%${titleFormated}%`), sub: sub },
     });
 
     return { ...animeData, exists: !!animeData };
