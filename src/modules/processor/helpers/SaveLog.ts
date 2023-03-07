@@ -27,17 +27,17 @@ class SaveLog {
       txt,
     });
 
-    await createProcessorController.handle({
-      universal_anime_id: ep.universal_anime_id,
-      integration_service: ep.integration_service,
-      last_version: ep.last_version,
-      episode: ep.episode,
-      attempt,
-      status: validMessage.flag,
-      description: validMessage.message,
-      resolution: ep.resolution,
-      created_at: new Date(),
-    });
+    // await createProcessorController.handle({
+    //   universal_anime_id: ep.universal_anime_id,
+    //   integration_service: ep.integration_service,
+    //   last_version: ep.last_version,
+    //   episode: ep.episode,
+    //   attempt,
+    //   status: validMessage.flag,
+    //   description: validMessage.message,
+    //   resolution: ep.resolution,
+    //   created_at: new Date(),
+    // });
 
     const animeInfo = await listAnimeController.handle({
       universal_anime_id: ep.universal_anime_id,
