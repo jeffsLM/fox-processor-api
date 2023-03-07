@@ -3,6 +3,7 @@ import { ICreateFoxEpisodeDTO } from '../../../episode/dtos/ICreateFoxEpisodeDTO
 import { GetValidPlusAllEpisodes } from './GetValidPlusAllEpisodes';
 import { GetValidPlusVideo } from './GetValidPlusVideo';
 import { Logger } from '../../../processor/helpers/Logger';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ListAllEpisodeController } from '../../../episode/useCase/listAllEpisode/ListAllEpisodeController';
 import { UpdateEpisodeController } from '../../../episode/useCase/updateEpisode/UpdateEpisodeController';
@@ -76,7 +77,7 @@ class ProviderPlusEpisodeInfo {
       const epToProcess = {
         alternative_name: anime.alternative_name,
         episode: Number(ep.episode),
-        integration_episode_id: ep.integration_episode_id,
+        integration_episode_id: ep.integration_episode_id + '_' + uuidv4(),
         last_version: 'S',
         integration_service: 'PLUS_' + anime.universal_anime_id,
         max_duration: '0',
