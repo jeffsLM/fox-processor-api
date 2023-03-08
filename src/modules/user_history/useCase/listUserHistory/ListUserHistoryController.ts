@@ -1,17 +1,15 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 
-import { ListUserHistoryUseCase } from './ListUserHistoryUseCase';
+import { ProcessHistoryController } from '../ProcessHistory/ProcessHistoryController';
 
 class ListUserHistoryController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { user } = request.body;
 
-    const listUserHistoryUseCase = container.resolve(ListUserHistoryUseCase);
+    const processHistoryController = new ProcessHistoryController();
 
-    const list = await listUserHistoryUseCase.execute({
-      user,
-    });
+    const list = await processHistoryController.handle({ user: user });
 
     return response.status(200).json(list).send();
   }
