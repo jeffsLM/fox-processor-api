@@ -79,7 +79,7 @@ FPA project is organized so that there are 5 encapsulators, namely:
 </ul>
 
 <h2>Related Projects</h2>
-<p>I also created an application that consumes FPA data and enables streaming on TVOS, check it out at: <a href="https://github.com/jeffsLM/fox-processor-api">Fox Anima</a></p>
+<p>I also created an application that consumes FPA data and enables streaming on TVOS, check it out at: <a href="https://github.com/jeffsLM/FoxAnima">Fox Anima</a></p>
 
 <h2>Contributing</h2>
 <p>Feel like contributing? Fantastic! but at the moment this project is on pause, but feel free to open a PR</p>
