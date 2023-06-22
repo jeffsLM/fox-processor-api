@@ -77,3 +77,12 @@ FPA project is organized so that there are 5 encapsulators, namely:
     <code>/populate</code> - Processes queue data with or without adding new titles
   </li>
 </ul>
+
+<h2>Related Projects</h2>
+<p>I also created an application that consumes FPA data and enables streaming on TVOS, check it out at: <a href="https://github.com/jeffsLM/fox-processor-api">Fox Anima</a></p>
+
+<h2>Contributing</h2>
+<p>Feel like contributing? Fantastic! but at the moment this project is on pause, but feel free to open a PR</p>
+
+<h2>License</h2>
+<p>MIT © <a href="https://github.com/jeffsLM">jeffsLM</a></p>
